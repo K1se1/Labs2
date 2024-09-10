@@ -57,6 +57,15 @@ bool operator<(const IPStruct& lIP,  const IPStruct& rIP)
     return false;
 }
 
+
+
+bool IPStruct::operator==(const IPStruct& rIP) const
+{
+    for(int i = 0; i <4; ++i)
+        if(_IP[i] != rIP[i]) return false;
+    return true; 
+}
+
 std::ostream& operator<<(std::ostream& os, const IPStruct& IP) 
 {
     return (os << IP[0] << "." << IP[1] << "." << IP[2] << "." << IP[3]); 

@@ -1,18 +1,25 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(lab2 VERSION 0.1.0 LANGUAGES C CXX)
+project(unittests CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CXX_STANDARD_REQUIRED TRUE)
 
 
-add_library(IPParser INTERFACE IPParser.hpp)
-add_library(IPStruct IPStruct.hpp IPStruct.cpp)
-add_executable(lab2 main.cpp)
+add_subdirectory(src)
+add_subdirectory(unittests)
 
-target_link_libraries(lab2 IPParser IPStruct)
-
-
-
-include(CTest)
 enable_testing()
+
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
+
+if(LINUX)
+set(CPACK_GENERATOR DEB)
+else()
+set(CPACK_GENERATOR ZIP)
+endif()
+
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")

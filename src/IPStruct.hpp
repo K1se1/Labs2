@@ -14,6 +14,7 @@ class IPStruct
         IPStruct(const IPStruct&);
         IPStruct& operator=(const IPStruct&);
         short& operator[](unsigned short) const;
+        bool operator==(const IPStruct&) const;
         //P.S из-за использования unique_ptr не тривиальный деструктор не нужен
 };
 

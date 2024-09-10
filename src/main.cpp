@@ -5,7 +5,7 @@
 
 int main(int, char**){
     std::vector<IPStruct> IPList;
-    IPParser::parseFile("C:\\Labs2\\lab2\\ip_filter.tsv", IPList); // По каким-то причинам относительные пути не работают...
+    IPParser::parseFile("C:\\Labs2\\lab2\\src\\ip_filter.tsv", IPList); // По каким-то причинам относительные пути не работают...
     std::sort(IPList.rbegin(), IPList.rend());
     //  Лямбды для списков, указанных в методичке
     auto first_list = [](const IPStruct& ip){std::cout << ip << "\n";};

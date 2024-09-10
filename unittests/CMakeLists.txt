@@ -15,3 +15,9 @@ set(COMMON_SRCS
 add_executable(IPParserTests IPParsertests.cpp ${COMMON_SRCS})
 target_include_directories(IPParserTests PUBLIC "../src")
 target_link_libraries(IPParserTests PUBLIC gtest gtest_main)
+
+if(LINUX)
+set(CPACK_GENERATOR DEB)
+else()
+set(CPACK_GENERATOR ZIP)
+endif()

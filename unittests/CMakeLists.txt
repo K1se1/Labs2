@@ -12,7 +12,7 @@ set(COMMON_SRCS
 "../src/IPStruct.cpp"
 )
 
-add_executable(IPParserTests "IPParsertests.cpp" ${COMMON_SRCS})
+add_executable(IPParserTests "IPParserTests.cpp" ${COMMON_SRCS})
 target_include_directories(IPParserTests PUBLIC "../src")
 target_link_libraries(IPParserTests PUBLIC gtest gtest_main)
 

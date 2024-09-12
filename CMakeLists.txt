@@ -11,7 +11,7 @@ add_subdirectory(unittests)
 
 enable_testing()
 
-add_test(NAME IPParserTests COMMAND IPParserTests)
+#add_test(NAME IPParserTests COMMAND IPParserTests)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)

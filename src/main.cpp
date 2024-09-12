@@ -22,3 +22,7 @@ int main(int, char**){
 ///TODO:
 /// Написать тесты
 /// Написать yml файл
+
+
+//// Вот пример нормальной сборки CMake с unit тестами
+/// https://github.com/kylerobots/cpp-unit-test-example

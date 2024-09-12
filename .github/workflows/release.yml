@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     permissions: write-all
     steps:
       - uses: actions/checkout@v3
@@ -35,6 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./unittests-0.0.${{ github.run_number }}-Linux.zip
-          asset_name: unittests-0.0.${{ github.run_number }}-Linux.zip
+          asset_path: ./unittests-0.0.${{ github.run_number }}-Darwin.zip
+          asset_name: unittests-0.0.${{ github.run_number }}-Darwin.zip
           asset_content_type: application/zip

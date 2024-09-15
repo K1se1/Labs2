@@ -1,6 +1,8 @@
 #pragma once
 #include<initializer_list>
 #include<memory>
+#include "../Containers.hpp"
+#include "ArrayIter.hpp"
 
 namespace Containers
 {
@@ -13,6 +15,8 @@ class Array
         size_t _capacity;
         const double _capRatio = 2;
     public:
+        typedef Iters::ArrayIter<T> iter;
+        typedef Iters::ArrayIter<const T> const_iter;
         //Basic
         Array();
         Array(size_t);
@@ -22,6 +26,7 @@ class Array
         Array<T>& operator=(const Array<T>&);
         // Move
         Array(Array&&);
+        // Основные методы
         Array<T>& operator=(Array<T>&&);
         inline size_t size() const;
         inline size_t capacity() const;
@@ -31,6 +36,11 @@ class Array
         void insert(size_t, const T&);
         void insert(size_t, T&&);
         void erase(size_t);
+        // Методы для итераторов
+        iter begin();
+        iter end();
+        iter begin() const;
+        iter end() const;
 };
 
 template<typename T>
@@ -55,11 +65,7 @@ Array<T>::Array(std::initializer_list<T> data)
     if(_size == 0) _capacity =1;
     else _capacity = _size*_capRatio;
     _Arr = std::make_unique<T[]>(_capacity);
-    for(const auto& chunk:data)
-    {
-        _Arr[i] = chunk;
-        ++i;
-    }
+    std::copy(data.begin(), data.end(), _Arr.get());
 }
 
 template<typename T>
@@ -176,4 +182,17 @@ void Array<T>::erase(size_t i)
     --_size;
 }
 
+
+// Методы для итераторов
+template<typename T>
+typename Array<T>::iter Array<T>::begin()
+{
+    return iter(_Arr.get());
+}
+
+template<typename T>
+typename Array<T>::iter Array<T>::end()
+{
+    return iter(_Arr.get()+_size);
+}
 }

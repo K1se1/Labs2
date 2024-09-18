@@ -22,6 +22,8 @@ namespace Iters
 {
     template<typename T>
     class ArrayIter;
+    template<typename T>
+    class OneForwardListIter;
 }
 
 }

@@ -3,6 +3,7 @@
 #include "OneForwardNode.hpp"
 #include<memory>
 #include<initializer_list>
+#include "OneForwardListIter.hpp"
 namespace Containers
 {
 
@@ -10,10 +11,14 @@ namespace Containers
 template<typename T>
 class OneForwardList
 {
+    template<typename ValueType>
+    friend class Iters::OneForwardListIter;
     private:
         std::shared_ptr<Nodes::OneForwardNode<T>> _node;
         size_t _size;
     public:
+        typedef Iters::OneForwardListIter<T> iter;
+        typedef Iters::OneForwardListIter<const T> const_iter;
         OneForwardList();
         OneForwardList(size_t);
         OneForwardList(const std::initializer_list<T>&);
@@ -29,6 +34,10 @@ class OneForwardList
         void push_back(const T&);
         void insert(size_t, const T&);
         void erase(size_t);
+        iter begin();
+        iter end();
+        iter begin() const;
+        iter end() const;
 };
 
 
@@ -212,6 +221,21 @@ void OneForwardList<T>::erase(size_t pos)
     --_size;
 }
 
+
+template<typename T>
+typename OneForwardList<T>::iter OneForwardList<T>::begin()
+{
+    return iter(_node.get());
+}
+
+template<typename T>
+typename OneForwardList<T>::iter OneForwardList<T>::end()
+{
+    auto tempNode = _node;
+    for(int i = 0; i < _size;++i)
+        tempNode = tempNode->_next;
+    return iter(tempNode.get());
+}
 
 
 }

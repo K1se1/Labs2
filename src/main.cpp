@@ -22,5 +22,7 @@ int main(int, char**){
     list.erase(0);
     for(int i = 0; i< list.size(); ++i)
         std::cout << list[i] <<" ";
+    std::cout << "\n";
+    std::for_each(list.begin(), list.end(), [](auto& num){std::cout << num << " ";});
     
 }

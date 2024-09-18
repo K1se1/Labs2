@@ -11,13 +11,16 @@ namespace Iters
 template<typename T>
 class ArrayIter
 {
+    template<typename ValueType>
+    friend class ::Containers::Array;
+
+    /// Все это нужно для работы функция из std
     using iterator_category = std::forward_iterator_tag;
     using value_type = int;
     using difference_type = int;
     using pointer = int*;
     using reference = int&;
-    template<typename Value>
-    friend class ::Containers::Array;
+    
     private:
         ArrayIter(T*);
         T* _ptr;

@@ -26,8 +26,8 @@ class Array
         Array<T>& operator=(const Array<T>&);
         // Move
         Array(Array&&);
-        // Основные методы
         Array<T>& operator=(Array<T>&&);
+        // Основные методы
         inline size_t size() const;
         inline size_t capacity() const;
         T& operator[](size_t) const;

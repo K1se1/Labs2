@@ -2,6 +2,7 @@
 #include<algorithm>
 #include "Containers/Array/Array.hpp"
 #include"Containers/List/OneForwardList.hpp"
+#include"Containers/List/TwoForwardList.hpp"
 int main(int, char**){
     Containers::Array<int> a = {1, 2, 3 ,4, 5, 6, 7, 8};
     for(int i =0; i < a.size(); ++i)
@@ -24,5 +25,9 @@ int main(int, char**){
         std::cout << list[i] <<" ";
     std::cout << "\n";
     std::for_each(list.begin(), list.end(), [](auto& num){std::cout << num << " ";});
+    Containers::TwoForwardList<int> listt = {1, 2, 3, 4};
+    listt.erase(0);
+    std::cout << "\n";
+    std::for_each(listt.begin(), listt.end(), [](auto& num){std::cout << num << " ";});
     
 }

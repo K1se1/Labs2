@@ -48,8 +48,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url}}
-          asset_name: unittests-0.0.${{ github.run_number }}-Linux.zip
-          asset_path: ./unittests-0.0.${{ github.run_number }}-Linux.zip
+          asset_name: lab3-0.0.${{ github.run_number }}-Linux.zip
+          asset_path: ./lab3-0.0.${{ github.run_number }}-Linux.zip
           asset_content_type: application/vnd.debian.binary-package
 
   release_assets_macos:
